@@ -1,0 +1,3 @@
+displayName = Cmdpro's Mod
+author = Cmdpro
+version = 0.1
