@@ -14,9 +14,9 @@ namespace CmdsMod.Items
 		{ 
 			// DisplayName.SetDefault("CelestialBlade"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
 			Tooltip.SetDefault("Shoots Fire");
-			Main.itemAnimations[item.type].FrameCount = 8;
-		}
+			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(2, 8));
 
+		}
 		public override void SetDefaults() 
 		{
 			item.damage = 30;
