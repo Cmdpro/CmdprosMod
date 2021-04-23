@@ -10,6 +10,7 @@ namespace CmdsMod.Projectiles
 	{
 		//float projectile.blockbounce;
 		public override void SetStaticDefaults() {
+			Main.projFrames[projectile.type] = 2;
 			DisplayName.SetDefault("Fire Staff's Fire");     //The English name of the projectile
 			//ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
 			//ProjectileID.Sets.TrailingMode[projectile.type] = 0;        //The recording mode
