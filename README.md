@@ -1,7 +1,7 @@
 # CmdsMod
 # Planning on Doing:
-Adding Elemental Bar - Status: Idea  
-Adding Elemental Sword - Status: Idea  
+Adding Elemental Bar - Idea  
+Adding Elemental Sword - Idea  
 Adding Elemental Helmet - Idea  
 Adding Elemental Breastplate - Idea  
 Adding Elemental Boots - Idea  
