@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jeffi\\OneDrive\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj": {}
+    "C:\\Users\\jeffrey\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jeffi\\OneDrive\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj": {
+    "C:\\Users\\jeffrey\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jeffi\\OneDrive\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj",
+        "projectUniqueName": "C:\\Users\\jeffrey\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj",
         "projectName": "CmdsMod",
-        "projectPath": "C:\\Users\\jeffi\\OneDrive\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj",
-        "packagesPath": "C:\\Users\\jeffi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jeffi\\OneDrive\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\obj\\",
+        "projectPath": "C:\\Users\\jeffrey\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj",
+        "packagesPath": "C:\\Users\\jeffrey\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeffrey\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jeffi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jeffrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,7 +49,7 @@
               "version": "[0.1.*, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
