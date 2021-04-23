@@ -317,7 +317,7 @@ namespace CmdsMod.NPCs
             {
                 if (Main.rand.Next(3) == 0) // For items that you want to have a chance to drop 
                 {
-                    //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TutorialBar"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FireStaff"));
                 }
                 //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TutorialSummonItem")); // For Items that you want to always drop
                 if (allDmgEnraged == true)
