@@ -1,11 +1,11 @@
 # CmdsMod
 # Planning on Doing:
-Adding Elemental Bar - Status: Idea\n
-Adding Elemental Sword - Status: Idea\n
-Adding Elemental Helmet - Idea\n
-Adding Elemental Breastplate - Idea\n
-Adding Elemental Boots - Idea\n
-Adding Elemental Bow - Idea\n
-Adding Water Bow - Idea\n
-Adding Air Staff (Summon) - Idea\n
-Adding Earth Sword - Idea
+Adding Elemental Bar - Status: Idea  
+Adding Elemental Sword - Status: Idea  
+Adding Elemental Helmet - Idea  
+Adding Elemental Breastplate - Idea  
+Adding Elemental Boots - Idea  
+Adding Elemental Bow - Idea  
+Adding Water Bow - Idea  
+Adding Air Staff (Summon) - Idea  
+Adding Earth Sword - Idea  
