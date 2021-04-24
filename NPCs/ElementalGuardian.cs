@@ -58,7 +58,7 @@ namespace CmdsMod.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             
             
-            bossBag = mod.ItemType("TutorialBossBag"); // Needed for the NPC to drop loot bag.
+            bossBag = mod.ItemType("ElementalGuardianBag"); // Needed for the NPC to drop loot bag.
             npc.scale = 3;
         }
 
@@ -320,12 +320,14 @@ namespace CmdsMod.NPCs
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FireStaff"));
                 }
                 //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TutorialSummonItem")); // For Items that you want to always drop
-                if (allDmgEnraged == true)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ElementalShooter"));
-                }
+                System.Random rand = new System.Random();
+                int ElementalBarCount = rand.Next(20, 30);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ElementalBar"), ElementalBarCount);
             }
-
+            if (allDmgEnraged == true)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ElementalShooter"));
+            }
             // For settings if the boss has been downed
             CmdsWorld.downedElementalGuardian = true;
         }

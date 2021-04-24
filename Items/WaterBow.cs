@@ -8,16 +8,17 @@ using Terraria.DataStructures;
 
 namespace CmdsMod.Items
 {
-	public class FireStaff : ModItem
+	public class WaterBow : ModItem
 	{
 		public override void SetStaticDefaults() 
 		{ 
 			// DisplayName.SetDefault("CelestialBlade"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+			Tooltip.SetDefault("How is this not falling apart?");
 
 		}
 		public override void SetDefaults() 
 		{
-			item.damage = 60;
+			item.damage = 30;
 			item.magic = true;
 			item.width = 26;
 			item.height = 26;
@@ -29,6 +30,7 @@ namespace CmdsMod.Items
 			item.value = 10000;
 			item.rare = 2;
 			item.scale = 1.5f;
+			item.useAmmo = AmmoID.Arrow;
 			
 			//item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
