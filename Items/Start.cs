@@ -32,11 +32,14 @@ namespace CmdsMod.Items
 
 		public override void AddRecipes()
 		{
-			//ModRecipe recipe = new ModRecipe(mod);
-			//recipe.AddIngredient(ItemID.DirtBlock, 32);
-			//recipe.AddTile(TileID.Anvils);
-			//recipe.SetResult(this);
-			//recipe.AddRecipe();
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Ruby, 64);
+			recipe.AddIngredient(ItemID.SoulofSight, 100);
+			recipe.AddIngredient(ItemID.Diamond, 64);
+			recipe.AddIngredient(ItemID.SoulofNight, 100);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
 		public override bool CanUseItem(Player player)
 		{

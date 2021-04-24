@@ -33,7 +33,7 @@ namespace CmdsMod.NPCs
             npc.aiStyle = -1; // Will not have any AI from any existing AI styles. 
             npc.lifeMax = 666; // The Max HP the boss has on Normal
             npc.damage = 666; // The base damage value the boss has on Normal
-            npc.defense = 666; // The base defense on Normal
+            npc.defense = 99999; // The base defense on Normal
             npc.knockBackResist = 0f; // No knockback
             npc.width = 148;
             npc.height = 198;
