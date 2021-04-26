@@ -28,7 +28,7 @@ namespace CmdsMod.Items
 		{
 			//player.accRunSpeed = 6f; // The player's maximum run speed with accessories
 			//player.moveSpeed += 0.05f; // The acceleration multiplier of the player's movement speed
-			
+			//shoots 8 elemental daggers in the n, e, s, w, ne, nw, sw, se
 		}
 		
 
