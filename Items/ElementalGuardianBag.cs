@@ -42,10 +42,9 @@ namespace CmdsMod.Items
 			{
 				//player.QuickSpawnItem(ModContent.ItemType<AbominationMask>());
 			}
-			player.QuickSpawnItem(Main.rand.Next(new int[] { ModContent.ItemType<FireStaff>(), ModContent.ItemType<WaterBow>(), ModContent.ItemType<EarthSword>() }));
+			player.QuickSpawnItem(Main.rand.Next(new int[] { ModContent.ItemType<FireStaff>(), ModContent.ItemType<WaterBow>(), ModContent.ItemType<EarthSword>(), ModContent.ItemType<Minions.AirMItem>() }));
 			ElementalBarCount = rand.Next(25, 40);
 			player.QuickSpawnItem(ModContent.ItemType<ElementalBar>(), ElementalBarCount);
-			//waiting for someone on the discord to help me
 		}
 		
 

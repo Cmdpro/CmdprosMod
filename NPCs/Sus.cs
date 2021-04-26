@@ -31,8 +31,8 @@ namespace CmdsMod.NPCs
         public override void SetDefaults()
         {
             npc.aiStyle = -1; // Will not have any AI from any existing AI styles. 
-            npc.lifeMax = 666; // The Max HP the boss has on Normal
-            npc.damage = 666; // The base damage value the boss has on Normal
+            npc.lifeMax = 666666; // The Max HP the boss has on Normal
+            npc.damage = 666666; // The base damage value the boss has on Normal
             npc.defense = 99999; // The base defense on Normal
             npc.knockBackResist = 0f; // No knockback
             npc.width = 148;
@@ -45,7 +45,7 @@ namespace CmdsMod.NPCs
             npc.noTileCollide = true; // Will not collide with the tiles. 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            speed = 10;
+            speed = 500;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SusSong");
             npc.scale = 1;
         }

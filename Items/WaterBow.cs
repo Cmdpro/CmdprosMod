@@ -19,12 +19,13 @@ namespace CmdsMod.Items
 		public override void SetDefaults() 
 		{
 			item.damage = 30;
-			item.magic = true;
+			//item.magic = true;
+			item.ranged = true;
 			item.width = 26;
 			item.height = 26;
-			item.useTime = 25;
+			item.useTime = 15;
 			item.useAnimation = 25;
-			item.mana = 20;
+			//item.mana = 20;
 			item.useStyle = 5;
 			item.knockBack = 6;
 			item.value = 10000;
@@ -34,10 +35,10 @@ namespace CmdsMod.Items
 			
 			//item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shoot = ModContent.ProjectileType<Projectiles.Fire>();
+			item.shoot = ModContent.ProjectileType<Projectiles.WaterArrow>();
 			//item.shoot = ModContent.ProjectileType<Projectiles.CelestialBladeVortex>();
 			
-			item.shootSpeed = 3;
+			item.shootSpeed = 6;
 		}
 
 		public override void AddRecipes() 
@@ -56,7 +57,7 @@ namespace CmdsMod.Items
 		{
 			// Here we randomly set type to either the original (as defined by the ammo), a vanilla projectile, or a mod projectile.
 			//type = Main.rand.Next(new int[] { type, ModContent.ProjectileType<Projectiles.PWaterDagger>(), ModContent.ProjectileType<Projectiles.PFireDagger>(), ModContent.ProjectileType<Projectiles.PAirDagger>(), ModContent.ProjectileType<Projectiles.PEarthDagger>() });
-			
+			item.shoot = ModContent.ProjectileType<Projectiles.WaterArrow>();
 			//item.shoot = type;
 			return true;
 		}
