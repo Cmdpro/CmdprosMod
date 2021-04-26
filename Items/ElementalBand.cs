@@ -6,12 +6,12 @@ using CmdsMod;
 namespace CmdsMod.Items
 {
 	//[AutoloadEquip(EquipType.Shoes)]
-	public class ExampleHermesBoots : ModItem
+	public class ElementalBand : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Example Hermes Boots");
-			Tooltip.SetDefault("The wearer can run super fast");
+			DisplayName.SetDefault("Elemental Band");
+			Tooltip.SetDefault("Grants 30 more Max Mana, 30 more Max Life, and 1 more Max Minion Slot");
 		}
 
 		public override void SetDefaults()
@@ -20,18 +20,17 @@ namespace CmdsMod.Items
 			item.height = 24;
 			item.accessory = true; // Makes this item an accessory.
 			item.noUseGraphic = true;
-			item.rare = ItemRarityID.Blue;
+			item.rare = ItemRarityID.Expert;
 			item.value = Item.sellPrice(gold: 1); // Sets the item sell price to one gold coin.
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			//player.accRunSpeed = 6f; // The player's maximum run speed with accessories
-			//player.moveSpeed += 0.05f; // The acceleration multiplier of the player's movement speed
-			//shoots 8 elemental daggers in the n, e, s, w, ne, nw, sw, se
+			player.statManaMax2 += 30;
+			player.statLifeMax2 += 30;
+			player.maxMinions += 1;
 		}
 		
-
 
 	}
 }

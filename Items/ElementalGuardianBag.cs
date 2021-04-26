@@ -45,6 +45,7 @@ namespace CmdsMod.Items
 			player.QuickSpawnItem(Main.rand.Next(new int[] { ModContent.ItemType<FireStaff>(), ModContent.ItemType<WaterBow>(), ModContent.ItemType<EarthSword>(), ModContent.ItemType<Minions.AirMItem>() }));
 			ElementalBarCount = rand.Next(25, 40);
 			player.QuickSpawnItem(ModContent.ItemType<ElementalBar>(), ElementalBarCount);
+			player.QuickSpawnItem(ModContent.ItemType<ElementalBand>());
 		}
 		
 
