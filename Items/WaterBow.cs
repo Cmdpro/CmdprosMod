@@ -18,7 +18,7 @@ namespace CmdsMod.Items
 		}
 		public override void SetDefaults() 
 		{
-			item.damage = 30;
+			item.damage = 40;
 			//item.magic = true;
 			item.ranged = true;
 			item.width = 26;
@@ -26,7 +26,7 @@ namespace CmdsMod.Items
 			item.useTime = 15;
 			item.useAnimation = 25;
 			//item.mana = 20;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 6;
 			item.value = 10000;
 			item.rare = 2;

@@ -11,24 +11,26 @@ namespace CmdsMod.Items
 	public class FireStaff : ModItem
 	{
 		public override void SetStaticDefaults() 
-		{ 
+		{
 			// DisplayName.SetDefault("CelestialBlade"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-
+			Item.staff[item.type] = true;
 		}
 		public override void SetDefaults() 
 		{
 			item.damage = 60;
 			item.magic = true;
-			item.width = 26;
-			item.height = 26;
+			item.width = 8;
+			item.height = 8;
 			item.useTime = 25;
 			item.useAnimation = 25;
 			item.mana = 20;
 			item.useStyle = 5;
+			item.handOffSlot = 1;
 			item.knockBack = 6;
 			item.value = 10000;
 			item.rare = 2;
 			item.scale = 1.5f;
+			
 			
 			//item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
