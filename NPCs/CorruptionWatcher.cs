@@ -46,6 +46,7 @@ namespace CmdsMod.NPCs
             npc.noTileCollide = true; // Will not collide with the tiles. 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CorruptionWatcherMusic");
 
 
             bossBag = mod.ItemType("CorruptionWatcherBag"); // Needed for the NPC to drop loot bag.
@@ -61,6 +62,9 @@ namespace CmdsMod.NPCs
 
         public override void AI()
         {
+            System.Random rand = new System.Random();
+            int randatk = 0;
+
             Target(); // Sets the Player Target
 
             DespawnHandler(); // Handles if the NPC should despawn.
@@ -73,91 +77,29 @@ namespace CmdsMod.NPCs
                                          //}
             npc.ai[1] -= 1f; // Subtracts 1 from the ai.
 
-            if (player.ZoneCorrupt || player.ZoneCrimson)
+            
+            speed = 4f;
+            //else
+            //{
+            //    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/EnragedCorruptionWatcherMusic");
+            //}
+            if (npc.ai[0] == 0)
             {
-                if (enraged == false && npc.life < 5000)
-                {
-                    npc.lifeMax = 15000;
-                    int life = npc.life;
-                    npc.life = 15000 - npc.life;
-                    allDmgEnraged = false;
-                }
-                enraged = true;
+                
+                randatk = rand.Next(0, 1);
             }
-            if (enraged == true)
+            if (npc.ai[0] <= 0)
             {
-                speed = 9;
-                npc.damage = 30;
-                if (npc.life == 5000)
-                {
-                    allDmgEnraged = true;
-                    npc.lifeMax = 15000;
-                    npc.life = 15000;
-                }
-
-            }
-            else
-            {
-                speed = 3.5f;
-            }
-            if (enraged == false)
-            {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CorruptionWatcherMusic");
-            }
-            else
-            {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/EnragedCorruptionWatcherMusic");
-            }
-            if (npc.ai[1] == 20 || npc.ai[1] == 45)
-            {
-                Shoot();
-                if (phase == 2)
+                
+                if (randatk == 0)
                 {
                     Shoot();
-                    Shoot();
+                    if (npc.ai[0] == -10)
+                    {
+                        npc.ai[0] = 180;
+                    }
                 }
-            }
-            if (npc.ai[1] == 15 || npc.ai[1] == 40)
-            {
-                Shoot();
-                if (phase == 2)
-                {
-                    Shoot();
-                    Shoot();
-                }
-            }
-            if (npc.ai[1] == 10 || npc.ai[1] == 35)
-            {
-                Shoot();
-                if (phase == 2)
-                {
-                    Shoot();
-                    Shoot();
-                }
-            }
-            if (npc.ai[1] == 5 || npc.ai[1] == 30)
-            {
-                Shoot();
-                if (phase == 2)
-                {
-                    Shoot();
-                    Shoot();
-                }
-            }
-            if (npc.ai[1] <= 1 && phase == 2)
-            {
-                Rain();
-            }
-            if (npc.ai[1] <= 0)
-            {
-                if (npc.ai[1] <= 0 && phase == 1)
-                {
-                    npc.ai[1] = 200f;
-                }
-                if (npc.ai[1] <= 0 && phase == 2)
-                {
-                    npc.ai[1] = 50f;
-                }
+                
             }
 
         }
@@ -208,23 +150,7 @@ namespace CmdsMod.NPCs
 
         private void Shoot()
         {
-            int type = mod.ProjectileType("EarthDagger");
-            if (npc.ai[1] == 20 || npc.ai[1] == 45)
-            {
-                type = mod.ProjectileType("EarthDagger");
-            }
-            if (npc.ai[1] == 15 || npc.ai[1] == 40)
-            {
-                type = mod.ProjectileType("AirDagger");
-            }
-            if (npc.ai[1] == 10 || npc.ai[1] == 35)
-            {
-                type = mod.ProjectileType("FireDagger");
-            }
-            if (npc.ai[1] == 5 || npc.ai[1] == 30)
-            {
-                type = mod.ProjectileType("WaterDagger");
-            }
+            int type = mod.ProjectileType("CorruptedPellet");
 
             Vector2 velocity = player.Center - npc.Center; // Get the distance between target and npc.
             float magnitude = Magnitude(velocity);
@@ -317,12 +243,8 @@ namespace CmdsMod.NPCs
                 int ElementalBarCount = rand.Next(20, 30);
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ElementalBar"), ElementalBarCount);
             }
-            if (allDmgEnraged == true)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ElementalShooter"));
-            }
             // For settings if the boss has been downed
-            CmdsWorld.downedCorruptionWatcher = true;
+            CmdsWorld.downedEvil1 = true;
         }
 
 

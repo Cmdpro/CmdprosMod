@@ -16,16 +16,19 @@ namespace CmdsMod
 	public class CmdsWorld : ModWorld
 	{
         public static bool downedElementalGuardian = false; // Downed Tutorial Boss
+        public static bool downedEvil1 = false;
 
         public override void Initialize()
         {
             downedElementalGuardian = false;
+            downedEvil1 = false;
         }
 
         public override TagCompound Save()
         {
             var downed = new List<string>();
             if (downedElementalGuardian) downed.Add("elementalguardian");
+            if (downedEvil1) downed.Add("evil1");
 
             return new TagCompound
             {
@@ -37,6 +40,7 @@ namespace CmdsMod
         {
             var downed = tag.GetList<string>("downed");
             downedElementalGuardian = downed.Contains("elementalguardian");
+            downedEvil1 = downed.Contains("evil1");
         }
 
         public override void LoadLegacy(BinaryReader reader)
@@ -46,6 +50,7 @@ namespace CmdsMod
             {
                 BitsByte flags = reader.ReadByte();
                 downedElementalGuardian = flags[0];
+                downedEvil1 = flags[1];
             }
         }
 
@@ -53,6 +58,7 @@ namespace CmdsMod
         {
             BitsByte flags = new BitsByte();
             flags[0] = downedElementalGuardian;
+            flags[1] = downedEvil1;
             writer.Write(flags);
         }
 
@@ -60,6 +66,7 @@ namespace CmdsMod
         {
             BitsByte flags = reader.ReadByte();
             downedElementalGuardian = flags[0];
+            downedEvil1 = flags[0];
         }
 
 
