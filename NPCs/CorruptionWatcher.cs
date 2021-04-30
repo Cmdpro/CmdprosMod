@@ -46,7 +46,7 @@ namespace CmdsMod.NPCs
             npc.noTileCollide = true; // Will not collide with the tiles. 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CorruptionWatcherMusic");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Evil1BossMusic");
 
 
             bossBag = mod.ItemType("CorruptionWatcherBag"); // Needed for the NPC to drop loot bag.
