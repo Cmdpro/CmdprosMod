@@ -75,7 +75,7 @@ namespace CmdsMod.NPCs
                                          //{
                                          //    npc.ai[2] -= 1f;
                                          //}
-            npc.ai[1] -= 1f; // Subtracts 1 from the ai.
+            npc.ai[0] -= 1f; // Subtracts 1 from the ai.
 
             
             speed = 4f;
@@ -86,7 +86,7 @@ namespace CmdsMod.NPCs
             if (npc.ai[0] == 0)
             {
                 
-                randatk = rand.Next(0, 1);
+                randatk = rand.Next(0, 3);
             }
             if (npc.ai[0] <= 0)
             {
@@ -94,10 +94,7 @@ namespace CmdsMod.NPCs
                 if (randatk == 0)
                 {
                     Shoot();
-                    if (npc.ai[0] == -10)
-                    {
-                        npc.ai[0] = 180;
-                    }
+                    npc.ai[0] = 25;
                 }
                 
             }
