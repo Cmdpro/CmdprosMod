@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +9,7 @@ namespace CmdsMod.Projectiles
 {
 	public class SmallCorruptedPellet : ModProjectile
 	{
+		private Player player;
 		//float projectile.blockbounce;
 		public float speed = 4f;
 		public override void SetStaticDefaults() {
@@ -27,7 +29,7 @@ namespace CmdsMod.Projectiles
 			projectile.hostile = true;         //Can the projectile deal damage to the player?
 			projectile.melee = true;           //Is the projectile shoot by a ranged weapon?
 			projectile.penetrate = 1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+			projectile.timeLeft = 60 * 6;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
 			projectile.light = 0f;            //How much light emit around the projectile
 			projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
@@ -77,53 +79,37 @@ namespace CmdsMod.Projectiles
 		}
 		public override void AI()
 		{
-			Vector2 targetPosition = new Vector2(0, 0);
-			int maxDistance = 2 * 200 * 200;
-			bool found = false;
-			foreach (Player n in Main.player)
-			{ 
-				if (n.statLifeMax > 0 && n.statLife > 0)
-				{
-					Vector2 pos = n.position;
-					int x = (int)pos.X;
-					int y = (int)pos.Y;
-
-					if ((x - (int)projectile.position.X) * (x - (int)projectile.position.X)
-						+ (y - (int)projectile.position.Y) * (y - (int)projectile.position.Y)
-						< maxDistance)
-					{
-						maxDistance = (x - (int)projectile.position.X) * (x - (int)projectile.position.X)
-						+ (y - (int)projectile.position.Y) * (y - (int)projectile.position.Y);
-						targetPosition = pos;
-						found = true;
-					}
-				}
-
-			}
-			if (found)
+			if (projectile.timeLeft >= 181)
 			{
-				if (projectile.timeLeft >= 301)
-				{
-					speed = 4f;
-				} else
-                {
-					speed = 5f;
-				}
-				if (projectile.timeLeft >= 301)
-				{
-					float inertia = 10f;
-					Vector2 direction = targetPosition - projectile.position;
-
-					direction.Normalize();
-					direction *= speed;
-
-					projectile.velocity = (projectile.velocity * (inertia - 1) + direction) / inertia;
-				}
+				Target();
+				Move(new Vector2(0, -100f));
 			}
-			if (projectile.timeLeft >= 301)
+		}
+		private void Target()
+		{
+			player = Main.player[Player.FindClosest(projectile.position, projectile.width, projectile.height)];
+
+
+		}
+		private void Move(Vector2 offset)
+		{
+			// Sets the max speed of the npc.
+			Vector2 moveTo = player.Center; // Gets the point that the npc will be moving to.
+			Vector2 move = moveTo - projectile.Center;
+			float magnitude = Magnitude(move);
+			if (magnitude > speed)
 			{
-				projectile.rotation = projectile.velocity.ToRotation() + MathHelper.Pi / 2;
+				move *= speed / magnitude;
 			}
+			float turnResistance = 10f; // The larget the number the slower the npc will turn.
+			move = (projectile.velocity * turnResistance + move) / (turnResistance + 1f);
+			magnitude = Magnitude(move);
+			if (magnitude > speed)
+			{
+				move *= speed / magnitude;
+			}
+			projectile.velocity = move;
+			RotateNPCToTarget();
 		}
 
 		public override void Kill(int timeLeft)
@@ -132,6 +118,17 @@ namespace CmdsMod.Projectiles
 			Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 			Main.PlaySound(SoundID.Item10, projectile.position);
 		}
-        
-    }
+		private float Magnitude(Vector2 mag)
+		{
+			return (float)Math.Sqrt(mag.X * mag.X + mag.Y * mag.Y);
+		}
+		private void RotateNPCToTarget()
+		{
+			if (player == null) return;
+			Vector2 direction = projectile.Center - player.Center;
+			float rotation = (float)Math.Atan2(direction.Y, direction.X);
+			projectile.rotation = rotation + ((float)Math.PI * 0.5f);
+		}
+
+	}
 }

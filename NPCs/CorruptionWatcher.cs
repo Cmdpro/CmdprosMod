@@ -47,6 +47,7 @@ namespace CmdsMod.NPCs
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Evil1BossMusic");
+            npc.ai[2] = 200;
 
 
             bossBag = mod.ItemType("CorruptionWatcherBag"); // Needed for the NPC to drop loot bag.
@@ -77,9 +78,11 @@ namespace CmdsMod.NPCs
                                          //}
             npc.ai[0] -= 1f; // Subtracts 1 from the ai.
             npc.ai[1] -= 1f;
+            npc.ai[2] -= 1f;
 
-            
-            speed = 4f;
+            if (npc.ai[2] >= 76) {
+                speed = 4f;
+            }
             //else
             //{
             //    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/EnragedCorruptionWatcherMusic");
@@ -115,6 +118,15 @@ namespace CmdsMod.NPCs
             {
                 npc.frame.Y = 0;
                 npc.ai[1] = 5;
+            }
+            if (npc.ai[2] == 75)
+            {
+                speed = 14;
+            }
+            if (npc.ai[2] <= 0)
+            {
+                speed = 4;
+                npc.ai[2] = 200;
             }
 
 
