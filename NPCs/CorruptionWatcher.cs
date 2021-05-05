@@ -76,6 +76,7 @@ namespace CmdsMod.NPCs
                                          //    npc.ai[2] -= 1f;
                                          //}
             npc.ai[0] -= 1f; // Subtracts 1 from the ai.
+            npc.ai[1] -= 1f;
 
             
             speed = 4f;
@@ -86,7 +87,7 @@ namespace CmdsMod.NPCs
             if (npc.ai[0] == 0)
             {
                 
-                randatk = rand.Next(0, 3);
+                randatk = rand.Next(0, 10);
             }
             if (npc.ai[0] <= 0)
             {
@@ -96,8 +97,26 @@ namespace CmdsMod.NPCs
                     Shoot();
                     npc.ai[0] = 25;
                 }
+                if (randatk == 4)
+                {
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<CorruptionShooter>());
+                }
                 
             }
+            if (npc.frame.Y == 0 && npc.ai[1] <= 0)
+            {
+                npc.frame.Y = 56;
+                npc.ai[1] = 5;
+            } else if (npc.frame.Y == 56 && npc.ai[1] <= 0)
+            {
+                npc.frame.Y = 112;
+                npc.ai[1] = 5;
+            } else if (npc.frame.Y == 112 && npc.ai[1] <= 0)
+            {
+                npc.frame.Y = 0;
+                npc.ai[1] = 5;
+            }
+
 
         }
 
@@ -125,6 +144,7 @@ namespace CmdsMod.NPCs
                 move *= speed / magnitude;
             }
             npc.velocity = move;
+            
         }
 
         private void DespawnHandler()
@@ -201,18 +221,19 @@ namespace CmdsMod.NPCs
             npc.frameCounter %= 20;
             int frame = (int)(npc.frameCounter / 2.0);
             if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
-            if (npc.life <= npc.lifeMax / 2)
-            {
-                npc.frame.Y = 64;
+            
 
-                phase = 2;
-            }
-            else
-            {
-                phase = 1;
-            }
+            //if (npc.life <= npc.lifeMax / 2)
+            //{
+            //    npc.frame.Y = 64;
+            //
+            //     phase = 2;
+            //}
+            //else
+            //{
+            //    phase = 1;
+            //}
 
-            RotateNPCToTarget();
         }
 
         private void RotateNPCToTarget()

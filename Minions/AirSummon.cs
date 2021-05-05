@@ -24,8 +24,8 @@ namespace CmdsMod.Minions
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Example Minion");
-			Description.SetDefault("The example minion will fight for you");
+			DisplayName.SetDefault("Tornado Minion");
+			Description.SetDefault("The Tornado will fight for you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
