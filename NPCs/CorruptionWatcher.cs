@@ -284,7 +284,5 @@ namespace CmdsMod.NPCs
             return null;
 
         }
-
-
     }
 }
