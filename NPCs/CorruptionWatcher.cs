@@ -271,7 +271,7 @@ namespace CmdsMod.NPCs
 
             }
             // For settings if the boss has been downed
-            CmdsWorld.downedEvil1 = true;
+            CmdsWorld.downedCorruptionWatcher = true;
         }
 
 

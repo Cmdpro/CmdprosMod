@@ -16,19 +16,22 @@ namespace CmdsMod
 	public class CmdsWorld : ModWorld
 	{
         public static bool downedElementalGuardian = false; // Downed Tutorial Boss
-        public static bool downedEvil1 = false;
+        public static bool downedCrimsonWatcher = false;
+        public static bool downedCorruptionWatcher = false;
 
         public override void Initialize()
         {
             downedElementalGuardian = false;
-            downedEvil1 = false;
+            downedCrimsonWatcher = false;
+            downedCorruptionWatcher = false;
         }
 
         public override TagCompound Save()
         {
             var downed = new List<string>();
             if (downedElementalGuardian) downed.Add("elementalguardian");
-            if (downedEvil1) downed.Add("evil1");
+            if (downedCrimsonWatcher) downed.Add("crimwat");
+            if (downedCorruptionWatcher) downed.Add("corruptwat");
 
             return new TagCompound
             {
@@ -40,7 +43,8 @@ namespace CmdsMod
         {
             var downed = tag.GetList<string>("downed");
             downedElementalGuardian = downed.Contains("elementalguardian");
-            downedEvil1 = downed.Contains("evil1");
+            downedCrimsonWatcher = downed.Contains("crimwat");
+            downedCorruptionWatcher = downed.Contains("corruptwat");
         }
 
         public override void LoadLegacy(BinaryReader reader)
@@ -50,7 +54,8 @@ namespace CmdsMod
             {
                 BitsByte flags = reader.ReadByte();
                 downedElementalGuardian = flags[0];
-                downedEvil1 = flags[1];
+                downedCrimsonWatcher = flags[1];
+                downedCorruptionWatcher = flags[2];
             }
         }
 
@@ -58,7 +63,8 @@ namespace CmdsMod
         {
             BitsByte flags = new BitsByte();
             flags[0] = downedElementalGuardian;
-            flags[1] = downedEvil1;
+            flags[1] = downedCrimsonWatcher;
+            flags[2] = downedCorruptionWatcher;
             writer.Write(flags);
         }
 
@@ -66,7 +72,8 @@ namespace CmdsMod
         {
             BitsByte flags = reader.ReadByte();
             downedElementalGuardian = flags[0];
-            downedEvil1 = flags[0];
+            downedCrimsonWatcher = flags[0];
+            downedCorruptionWatcher = flags[0];
         }
 
 
