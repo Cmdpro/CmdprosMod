@@ -37,12 +37,23 @@ namespace CmdsMod
         {
         ///    zoneBiome = (TutorialWorld.biomeTiles > 50); // Chance 50 to the minimum number of tiles that need to be counted before it is classed as a biome
         }
+        public override float UseTimeMultiplier(Item item)
+        {
+            if (player.HasBuff(ModContent.BuffType<Buffs.SpeedTime>()))
+            {
+                return 2;
+            } else
+            {
+                return 1;
+            }
+        }
+        
 
         //public override bool CustomBiomesMatch(Player other)
-       // {
+        // {
         ///    TutorialPlayer otherPlayer = other.GetModPlayer<TutorialPlayer>(mod); // This will get other players using the TutorialPlayerClass
         ///    return zoneBiome == otherPlayer.zoneBiome; // This will return true or false depending on other player
-       // }
+        // }
 
         public override void CopyCustomBiomesTo(Player other)
         {

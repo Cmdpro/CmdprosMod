@@ -268,10 +268,7 @@ namespace CmdsMod.NPCs
                 {
                     //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FireStaff"));
                 }
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, Main.rand.Next(new int[] { ModContent.ItemType<FireStaff>(), ModContent.ItemType<WaterBow>(), ModContent.ItemType<EarthSword>(), ModContent.ItemType<Minions.AirMItem>() })); // For Items that you want to always drop
-                System.Random rand = new System.Random();
-                int ElementalBarCount = rand.Next(20, 30);
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ElementalBar"), ElementalBarCount);
+
             }
             // For settings if the boss has been downed
             CmdsWorld.downedEvil1 = true;

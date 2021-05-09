@@ -64,7 +64,6 @@ namespace CmdsMod.NPCs
         {
             player = Main.player[Player.FindClosest(npc.position, npc.width, npc.height)];
 
-
         }
 
 
