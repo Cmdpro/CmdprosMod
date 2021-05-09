@@ -31,6 +31,8 @@ namespace CmdsMod
 			Mod bossChecklist = ModLoader.GetMod("BossChecklist");
 			if (bossChecklist != null)
 			{
+				bossChecklist.Call("AddBoss", 5.7f, ModContent.NPCType<NPCs.ElementalGuardian>(), this, "Elemental Guardian", (Func<bool>)(() => CmdsWorld.downedElementalGuardian), ModContent.ItemType<Items.CorruptedCell>(), "Use a [i:" + ModContent.ItemType<Items.CorruptedCell>() + "] to summon", "The Cell contains the chaos which is the Corruption Watcher", "CmdsMod/NPCs/CorruptionWatcher", "CmdsMod/NPCs/CorruptionWatcher_Head_Boss");
+				bossChecklist.Call("AddBoss", 5.7f, ModContent.NPCType<NPCs.ElementalGuardian>(), this, "Elemental Guardian", (Func<bool>)(() => CmdsWorld.downedElementalGuardian), ModContent.ItemType<Items.CrimsonCell>(), new List<int> { }, new List<int> { ModContent.ItemType<Items.CrimsonCell>() }, "Use a [i:" + ModContent.ItemType<Items.CrimsonCell>() + "] to summon", "The Cell contains the chaos which is the Crimson Watcher", "CmdsMod/NPCs/CrimsonWatcher", "CmdsMod/NPCs/CrimsonWatcher_Head_Boss");
 				bossChecklist.Call("AddBoss", 5.7f, ModContent.NPCType<NPCs.ElementalGuardian>(), this, "Elemental Guardian", (Func<bool>)(() => CmdsWorld.downedElementalGuardian), ModContent.ItemType<Items.ElementalBeacon>(), new List<int> { }, new List<int> {ModContent.ItemType<Items.ElementalShooter>() }, "Use a [i:" + ModContent.ItemType<Items.ElementalBeacon>() + "] to summon", "The Elemental Guardian protects the elementals from harm,\n By using an Elemental Beacon you are harming the elements,\nWhich causes him to come", "CmdsMod/NPCs/ElementalGuardianBossCL", "CmdsMod/NPCs/ElementalGuardianHeadCL");
 				// Additional bosses here
 			}
