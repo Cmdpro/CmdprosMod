@@ -37,5 +37,23 @@ namespace CmdsMod
 				// Additional bosses here
 			}
 		}
+		public override void Close()
+		{
+			// Fix a tModLoader bug.
+			var slots = new int[] {
+				GetSoundSlot(SoundType.Music, "Sounds/Music/ElementalGuardianMusic"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/EnragedElementalGuardianMusic"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/Evil1BossMusic"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/SusSong")
+			};
+			foreach (var slot in slots) // Other mods crashing during loading can leave Main.music in a weird state.
+			{
+				if (Main.music.IndexInRange(slot) && Main.music[slot]?.IsPlaying == true)
+				{
+					Main.music[slot].Stop(Microsoft.Xna.Framework.Audio.AudioStopOptions.Immediate);
+				}
+			}
+			base.Close();
+		}
 	}
 }

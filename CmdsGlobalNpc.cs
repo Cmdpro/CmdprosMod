@@ -30,6 +30,11 @@ namespace CmdsMod
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrimsonCell"), Main.rand.Next(1, 3));
                     }
                 }
+                if (npc.type == NPCID.DungeonGuardian)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Illuminati"), 1);
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Illuminati2"), 1);
+                }
 
             }
         }

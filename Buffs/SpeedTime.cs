@@ -38,7 +38,6 @@ namespace CmdsMod.Buffs
 			player.maxFallSpeed *= 2;
 			player.stepSpeed *= 2;
 			player.maxRunSpeed *= 2;
-			
 			if (player.buffTime[buffIndex] <= 1)
             {
 				hasnormalitemtimed = false;
