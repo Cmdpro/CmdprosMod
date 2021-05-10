@@ -30,8 +30,8 @@ namespace CmdsMod.Items
 			item.scale = 2.5f;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shoot = ModContent.ProjectileType<Projectiles.CelestialBladeSolar>();
-			//item.shoot = ModContent.ProjectileType<Projectiles.CelestialBladeVortex>();
+			item.shoot = ModContent.ProjectileType<Projectiles.CelestialBladeSolar>(); 
+			//item.shoot = ModContent.ProjectileType<Projectiles.CelestialBladeVortex>(); 
 			
 			item.shootSpeed = 6;
 		}

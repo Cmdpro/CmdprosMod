@@ -41,6 +41,17 @@ namespace CmdsMod.Items
         {
 			return !NPC.AnyNPCs(ModContent.NPCType<NPCs.CorruptionWatcher>()) && player.ZoneCorrupt;
 		}
-		
-    }
+		public override void AddRecipes()
+		{
+
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
+			recipe.AddIngredient(ItemID.DemoniteBar, 26);
+			recipe.AddIngredient(ItemID.RottenChunk, 7);
+			recipe.AddIngredient(ItemID.VilePowder, 25);
+			recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
 }
