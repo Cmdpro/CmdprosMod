@@ -1,5 +1,5 @@
-displayName = Cmdpro's Mod
-author = Cmdpro
+displayName = To Be Decided
+author = Cmdpro & RC3432
 version = 0.5.3
 hideCode = true
 hideSprites = true
