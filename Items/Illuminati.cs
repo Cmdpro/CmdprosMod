@@ -10,7 +10,7 @@ namespace CmdsMod.Items
 	public class Illuminati : ModItem
 	{
 		public NPC selectedEntity;
-		public Item selectedItem;
+		public Projectile selectedProj;
 		public Player selectedPlayer;
 		public Vector2 OldMousePos;
 		public override void SetStaticDefaults()
@@ -49,31 +49,35 @@ namespace CmdsMod.Items
 					selectedEntity = Main.npc[i];
 				}
 			}
-			for (int i = 0; i <= Main.maxItems; i++)
+			for (int i = 0; i <= Main.maxProjectiles; i++)
 			{
 				if (Main.item[i].Hitbox.Contains(Main.MouseWorld.ToPoint()))
 				{
-					selectedItem = Main.item[i];
+					selectedProj = Main.projectile[i];
 				}
 			}
 			for (int i = 0; i <= Main.maxPlayers; i++)
 			{
 				if (Main.player[i].Hitbox.Contains(Main.MouseWorld.ToPoint()))
 				{
-					selectedPlayer = Main.player[i];
+					Main.player[i].position = Main.MouseWorld;
 				}
 			}
 			if (selectedEntity != null)
 			{
-				selectedEntity.Center = Main.MouseWorld;
+				selectedEntity.position = Main.MouseWorld;
+				if (Main.netMode == Terraria.ID.NetmodeID.MultiplayerClient)
+				{
+					selectedEntity.netUpdate = true;
+				}
 			}
-			if (selectedItem != null)
+			if (selectedProj != null)
 			{
-				selectedItem.Center = Main.MouseWorld;
-			}
-			if (selectedPlayer != null)
-			{
-				selectedPlayer.Center = Main.MouseWorld;
+				selectedProj.position = Main.MouseWorld;
+				if (Main.netMode == Terraria.ID.NetmodeID.MultiplayerClient)
+				{
+					selectedProj.netUpdate = true;
+				}
 			}
 			OldMousePos = Main.MouseWorld;
 			return base.UseItem(player);
@@ -87,18 +91,27 @@ namespace CmdsMod.Items
 				if (selectedEntity != null)
 				{
 					selectedEntity.velocity = new Vector2(Main.MouseWorld.X / fling - OldMousePos.X / fling, Main.MouseWorld.Y / fling - OldMousePos.Y / fling);
+					if (Main.netMode == Terraria.ID.NetmodeID.MultiplayerClient)
+					{
+						selectedEntity.netUpdate = true;
+					}
 					selectedEntity = null;
 				}
-				if (selectedItem != null)
+				if (selectedProj != null)
 				{
-					selectedItem.velocity = new Vector2(Main.MouseWorld.X / fling - OldMousePos.X / fling, Main.MouseWorld.Y / fling - OldMousePos.Y / fling);
-					selectedItem = null;
+					selectedProj.velocity = new Vector2(Main.MouseWorld.X / fling - OldMousePos.X / fling, Main.MouseWorld.Y / fling - OldMousePos.Y / fling);
+					if (Main.netMode == Terraria.ID.NetmodeID.MultiplayerClient)
+					{
+						selectedProj.netUpdate = true;
+					}
+					selectedProj = null;
 				}
-				if (selectedPlayer != null)
-				{
-					selectedPlayer.velocity = new Vector2(Main.MouseWorld.X / fling - OldMousePos.X / fling, Main.MouseWorld.Y / fling - OldMousePos.Y / fling);
-					selectedPlayer = null;
-				}
+				//if (selectedPlayer != null)
+				//{
+				//	selectedPlayer.velocity = new Vector2(Main.MouseWorld.X / fling - OldMousePos.X / fling, Main.MouseWorld.Y / fling - OldMousePos.Y / fling);
+				//	selectedPlayer.netUpdate = true;
+				//	selectedPlayer = null;
+				//}
 			}
         }
     }
