@@ -7,7 +7,7 @@ using CmdsMod;
 
 namespace CmdsMod.Items
 {
-	public class Start : ModItem
+	public class SuspisiousLookingBean : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

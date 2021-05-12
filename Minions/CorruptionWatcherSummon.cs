@@ -20,19 +20,19 @@ namespace CmdsMod.Minions
 	 * This is NOT an in-depth guide to advanced minion AI
 	 */
 
-	public class AirMBuff : ModBuff
+	public class CWMBuff : ModBuff
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Tornado Minion");
-			Description.SetDefault("The Tornado will fight for you");
+			DisplayName.SetDefault("Mini Corruption Watcher Minion");
+			Description.SetDefault("The Mini Watcher will fight for you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			if (player.ownedProjectileCounts[ModContent.ProjectileType<AirMinion>()] > 0)
+			if (player.ownedProjectileCounts[ModContent.ProjectileType<CWMinion>()] > 0)
 			{
 				player.buffTime[buffIndex] = 18000;
 			}
@@ -44,12 +44,12 @@ namespace CmdsMod.Minions
 		}
 	}
 
-	public class AirMItem : ModItem
+	public class CWMItem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tornado Staff");
-			Tooltip.SetDefault("Summons a tornado to fight for you");
+			DisplayName.SetDefault("Corruption Staff");
+			Tooltip.SetDefault("Summons a mini corruption watcher to fight for you");
 			ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
 			ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
 		}
@@ -71,9 +71,9 @@ namespace CmdsMod.Minions
 			// These below are needed for a minion weapon
 			item.noMelee = true;
 			item.summon = true;
-			item.buffType = ModContent.BuffType<AirMBuff>();
+			item.buffType = ModContent.BuffType<CWMBuff>();
 			// No buffTime because otherwise the item tooltip would say something like "1 minute duration"
-			item.shoot = ModContent.ProjectileType<AirMinion>();
+			item.shoot = ModContent.ProjectileType<CWMinion>();
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -86,6 +86,7 @@ namespace CmdsMod.Minions
 			return true;
 		}
 
+
 	}
 
 	/*
@@ -94,13 +95,13 @@ namespace CmdsMod.Minions
 	 * If the player targets a certain NPC with right-click, it will fly through tiles to it
 	 * If it isn't attacking, it will float near the player with minimal movement
 	 */
-	public class AirMinion : ModProjectile
+	public class CWMinion : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tornado");
+			DisplayName.SetDefault("Mini Corruption Watcher");
 			// Sets the amount of frames this minion has on its spritesheet
-			Main.projFrames[projectile.type] = 6;
+			Main.projFrames[projectile.type] = 1;
 			// This is necessary for right-click targeting
 			ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 
@@ -146,7 +147,7 @@ namespace CmdsMod.Minions
 		}
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-			target.velocity.Y -= 10;
+			
         }
 
         public override void AI()
@@ -158,9 +159,9 @@ namespace CmdsMod.Minions
 			// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
 			if (player.dead || !player.active)
 			{
-				player.ClearBuff(ModContent.BuffType<AirMBuff>());
+				player.ClearBuff(ModContent.BuffType<CWMBuff>());
 			}
-			if (player.HasBuff(ModContent.BuffType<AirMBuff>()))
+			if (player.HasBuff(ModContent.BuffType<CWMBuff>()))
 			{
 				projectile.timeLeft = 2;
 			}
@@ -262,6 +263,11 @@ namespace CmdsMod.Minions
 			// Default movement parameters (here for attacking)
 			float speed = 8f;
 			float inertia = 20f;
+			
+			if (projectile.ai[0] < 0) {
+				projectile.ai[0] = 150;
+			}
+			projectile.ai[0] -= 1;
 
 			if (foundTarget)
 			{
@@ -272,7 +278,11 @@ namespace CmdsMod.Minions
 					Vector2 direction = targetCenter - projectile.Center;
 					direction.Normalize();
 					direction *= speed;
-					projectile.velocity = (projectile.velocity * (inertia - 1) + direction) / inertia;
+					if (projectile.ai[0] <= 15)
+					{
+						Projectile.NewProjectile(projectile.Center, direction, ModContent.ProjectileType<Projectiles.PSmallCorruptedPellet>(), 25, 1);
+					}
+					//projectile.velocity = (projectile.velocity * (inertia - 1) + direction) / inertia;
 				}
 			}
 			else
