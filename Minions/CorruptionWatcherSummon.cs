@@ -56,7 +56,7 @@ namespace CmdsMod.Minions
 
 		public override void SetDefaults()
 		{
-			item.damage = 30;
+			item.damage = 150;
 			item.knockBack = 3f;
 			item.mana = 10;
 			item.width = 32;
@@ -278,9 +278,9 @@ namespace CmdsMod.Minions
 					Vector2 direction = targetCenter - projectile.Center;
 					direction.Normalize();
 					direction *= speed;
-					if (projectile.ai[0] <= 15)
+					if (projectile.ai[0] <= 25)
 					{
-						Projectile.NewProjectile(projectile.Center, direction, ModContent.ProjectileType<Projectiles.PSmallCorruptedPellet>(), 25, 1);
+						Projectile.NewProjectile(projectile.Center, direction, ModContent.ProjectileType<Projectiles.PSmallCorruptedPellet>(), 0, 1);
 					}
 					//projectile.velocity = (projectile.velocity * (inertia - 1) + direction) / inertia;
 				}
@@ -291,13 +291,13 @@ namespace CmdsMod.Minions
 				if (distanceToIdlePosition > 600f)
 				{
 					// Speed up the minion if it's away from the player
-					speed = 12f;
+					speed = 24f;
 					inertia = 60f;
 				}
 				else
 				{
 					// Slow down the minion if closer to the player
-					speed = 4f;
+					speed = 8f;
 					inertia = 80f;
 				}
 				if (distanceToIdlePosition > 20f)
