@@ -34,8 +34,14 @@ namespace CmdsMod.Buffs
 		{
 			if (!Main.mouseRightRelease && click == false)
             {
-				player.Teleport(Main.MouseWorld);
-				click = true;
+				var selpos = Main.MouseWorld;
+				while (Collision.SolidCollision(selpos, player.width, player.height))
+				{
+					selpos.Y -= 1;
+				}
+				player.Teleport(selpos);
+				
+					click = true;
             }
 			if (Main.mouseRightRelease == true)
             {

@@ -7,16 +7,16 @@ using CmdsMod;
 
 namespace CmdsMod.Items
 {
-	public class WarpPotion : ModItem
-	{
-		public override void SetStaticDefaults() 
-		{ 
-			// DisplayName.SetDefault("CelestialBlade"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("Lets you warp to your mouse cursor using right click");
-		}
+    public class WarpPotion : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            // DisplayName.SetDefault("CelestialBlade"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            Tooltip.SetDefault("Lets you warp to your mouse cursor using right click");
+        }
 
-		public override void SetDefaults() 
-		{
+        public override void SetDefaults()
+        {
             item.width = 18;
             item.height = 26;
             item.useStyle = ItemUseStyleID.EatingUsing;
@@ -31,6 +31,7 @@ namespace CmdsMod.Items
             item.buffType = ModContent.BuffType<Buffs.Warp>(); //Specify an existing buff to be applied when used.
             item.buffTime = 180; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
         }
+    }
 	public class TimePotion : ModItem
 	{
 		public override void SetStaticDefaults() 

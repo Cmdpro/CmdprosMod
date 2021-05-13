@@ -30,3 +30,9 @@ C:\Users\jeffi\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMo
 C:\Users\jeffi\OneDrive\Documents\my games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.csproj.CopyComplete
 C:\Users\jeffi\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.dll
 C:\Users\jeffi\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.pdb
+C:\Users\b_c_s\OneDrive\Email attachments\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.csprojAssemblyReference.cache
+C:\Users\b_c_s\OneDrive\Email attachments\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.AssemblyInfoInputs.cache
+C:\Users\b_c_s\OneDrive\Email attachments\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.AssemblyInfo.cs
+C:\Users\b_c_s\OneDrive\Email attachments\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.csproj.CoreCompileInputs.cache
+C:\Users\b_c_s\OneDrive\Email attachments\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.dll
+C:\Users\b_c_s\OneDrive\Email attachments\Documents\My Games\Terraria\ModLoader\Mod Sources\CmdsMod\obj\Debug\net45\CmdsMod.pdb
