@@ -23,6 +23,7 @@ namespace CmdsMod
         {
             base.Hurt(pvp, quiet, damage, hitDirection, crit);
         }
+        
         public override void SetupStartInventory(IList<Item> items)
         {
         ///    items.Clear();
