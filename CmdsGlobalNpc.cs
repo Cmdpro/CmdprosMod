@@ -23,13 +23,28 @@ namespace CmdsMod
                 {
                     
                 }
-                if (npc.type == NPCID.DungeonGuardian)
+                if (npc.type == NPCID.DungeonGuardian && IsMoving(npc.oldPosition, npc.position, 5))
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Illuminati"), 1);
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Illuminati2"), 1);
+                    if (Main.rand.Next(0, 4) == 2)
+                    {
+                        int type = Main.rand.Next(new int[] { mod.ItemType("Illuminati"), mod.ItemType("Illuminati2"), mod.ItemType("Illuminati3") });
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, type, 1);
+                    }
+                    
                 }
 
             }
+        }
+        public bool IsMoving(Vector2 Oldpos, Vector2 Newpos, float RequiredDistance)
+        {
+            bool moving = false;
+            float distancex = Oldpos.X - Newpos.X;
+            float distancey = Oldpos.Y - Newpos.Y;
+            if (distancex > RequiredDistance || distancex < -RequiredDistance || distancey > RequiredDistance || distancey < -RequiredDistance)
+            {
+                moving = true;
+            }
+            return moving;
         }
     }
 }

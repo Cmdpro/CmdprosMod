@@ -10,7 +10,8 @@ namespace CmdsMod
     public class CmdsPlayer : ModPlayer
     {
         //public bool tutorialPet = false;
-        public bool summonAirMinion = false;
+        public static bool summonAirMinion = false;
+        public static bool canFlap = false;
 
         //public bool zoneBiome = false;
 
@@ -33,6 +34,7 @@ namespace CmdsMod
         ///    item.stack = 5;
         ///    items.Add(item);
         }
+        
 
         public override void UpdateBiomes()
         {

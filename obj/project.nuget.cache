@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "aqj7lEqAdJp7B9LlA+ILdkq51aE6uhiQ5upipkalVoFmseU7urqOdwcfPcijRyuKEG/KFFdcaJugb11rCK6yNQ==",
+  "dgSpecHash": "Yzq/OMaqdtVHL+mfF0gAkdAoHSGQKv5P26MNQeDdad18e1VE0G60Zi2YBbN2Yd/smtXm7JEMDDbUHqu8zq2mlw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\b_c_s\\OneDrive\\Email attachments\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj",
+  "projectFilePath": "C:\\Users\\jeffi\\OneDrive\\Documents\\my games\\Terraria\\ModLoader\\Mod Sources\\CmdsMod\\CmdsMod.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\b_c_s\\.nuget\\packages\\tmodloader.codeassist\\0.1.2\\tmodloader.codeassist.0.1.2.nupkg.sha512"
+    "C:\\Users\\jeffi\\.nuget\\packages\\tmodloader.codeassist\\0.1.2\\tmodloader.codeassist.0.1.2.nupkg.sha512"
   ],
   "logs": []
 }

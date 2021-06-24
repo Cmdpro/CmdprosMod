@@ -21,6 +21,7 @@ namespace CmdsMod.NPCs
         private int phase;
 		private bool enraged;
         private bool allDmgEnraged;
+        private bool frame2 = false;
 
         public override void SetStaticDefaults()
         {
@@ -289,12 +290,29 @@ namespace CmdsMod.NPCs
             if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
             if (npc.life <= npc.lifeMax / 2)
             {
-                npc.frame.Y = 64;
-                
+                if (frame2)
+                {
+                    npc.frame.Y = 80;
+                    frame2 = false;
+                } else
+                {
+                    frame2 = true;
+                    npc.frame.Y = 128;
+                }
                 phase = 2;
             } else
             {
                 phase = 1;
+                if (frame2)
+                {
+                    npc.frame.Y = 0;
+                    frame2 = false;
+                }
+                else
+                {
+                    frame2 = true;
+                    npc.frame.Y = 64;
+                }
             }
 
             RotateNPCToTarget();
